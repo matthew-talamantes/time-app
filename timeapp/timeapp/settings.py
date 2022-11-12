@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'useraccount.apps.UseraccountConfig',
+    'times.apps.TimesConfig',
 ]
 
 MIDDLEWARE = [
