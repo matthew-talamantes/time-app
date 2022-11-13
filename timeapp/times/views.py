@@ -20,10 +20,24 @@ class ClientCreateView(CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-class ClientListView(UserPassesTestMixin, ListAPIView):
+class ClientListView(ListAPIView):
     serializer_class = ClientSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
         return Client.objects.filter(user=user)
+
+class ClientRetrieveUpdateDeleteView(UserPassesTestMixin, RetrieveUpdateDestroyAPIView):
+    serializer_class = ClientSerializer
+    queryset = Client.objects.all()
+
+    def test_func(self):
+        user = self.request.user
+        client = self.get_object()
+
+        if user == client.user:
+            return True
+        
+        return False
+        
