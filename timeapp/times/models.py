@@ -41,6 +41,6 @@ class Client(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('client-detail', kwargs={'user': self.user.uuid, 'client': self.uuid})
+        return reverse('client-detail', kwargs={'pk': self.uuid})
 
     
