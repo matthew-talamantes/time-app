@@ -9,7 +9,7 @@ from useraccount.models import CustomUser
 # Create your models here.
 
 STATE_ABBREVIATIONS = [
-        (None, ''), ('AL', 'Alabama'), ('AK', 'Alaska'), ('AS', 'American Samoa'), ('AZ', 'Arizona'), ('AR', 'Arkansas'),
+        ('AL', 'Alabama'), ('AK', 'Alaska'), ('AS', 'American Samoa'), ('AZ', 'Arizona'), ('AR', 'Arkansas'),
         ('CA', 'California'), ('CO', 'Colorado'), ('CT', 'Connecticut'), ('DE', 'Delaware'), ('DC', 'District of Columbia'),
         ('FM', 'Federated States of Micronesia'), ('FL', 'Florida'), ('GA', 'Georgia'), ('GU', 'Guam'), ('HI', 'Hawaii'),
         ('ID', 'Idaho'), ('IL', 'Illinois'), ('IN', 'Indiana'), ('IA', 'Iowa'), ('KS', 'Kansas'), ('KY', 'Kentucky'),
@@ -33,7 +33,7 @@ class Client(models.Model):
     address1 = models.CharField(max_length=100, default= '', blank=True)
     address2 = models.CharField(max_length=100, default='', blank=True)
     city = models.CharField(max_length=50, default='', blank=True)
-    state = models.CharField(max_length=2, choices=STATE_ABBREVIATIONS, blank=True)
+    state = models.CharField(max_length=2, default='', choices=STATE_ABBREVIATIONS, blank=True)
     zipCode = models.CharField(max_length=5, verbose_name='Zip Code', default='', blank=True)
     url = models.URLField(blank=True)
 
